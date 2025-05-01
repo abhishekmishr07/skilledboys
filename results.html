@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Worker Results</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6fb;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #e91e63;
+    }
+
+    #worker-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .star {
+      color: gold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Search Results</h1>
+  <div id="worker-list">Loading...</div>
+
+  <script>
+    function getQueryParams() {
+      const params = new URLSearchParams(window.location.search);
+      return {
+        skill: params.get("skill") || '',
+        location: params.get("location") || ''
+      };
+    }
+
+    async function fetchWorkers(skill, location) {
+      try {
+        // Replace this with your real API call
+        // Example: `const res = await fetch(\`https://your-api.com/workers?skill=${skill}&location=${location}\`);`
+        
+        const dummyWorkers = Array.from({ length: 30 }, (_, i) => ({
+          name: `Electrician ${i + 1}`,
+          age: 20 + (i % 10),
+          gender: i % 2 === 0 ? 'Male' : 'Female',
+          experience: 1 + (i % 10),
+          rating: (Math.random() * 2 + 3).toFixed(1),
+          skill: 'Electrician',
+          location: 'Beta 1',
+          photo: `https://randomuser.me/api/portraits/${i % 2 === 0 ? 'men' : 'women'}/${i}.jpg`
+        }));
+
+        return dummyWorkers.filter(w =>
+          w.skill.toLowerCase().includes(skill.toLowerCase()) &&
+          w.location.toLowerCase().includes(location.toLowerCase())
+        );
+
+      } catch (err) {
+        console.error('Error fetching workers:', err);
+        return [];
+      }
+    }
+
+    function createCard(worker) {
+      const stars = '★'.repeat(Math.round(worker.rating)) + '☆'.repeat(5 - Math.round(worker.rating));
+      return `
+        <div class="card">
+          <img src="${worker.photo}" alt="${worker.name}" />
+          <h3>${worker.name}</h3>
+          <p><strong>Age:</strong> ${worker.age}</p>
+          <p><strong>Gender:</strong> ${worker.gender}</p>
+          <p><strong>Experience:</strong> ${worker.experience} years</p>
+          <p><strong>Rating:</strong> <span class="star">${stars}</span></p>
+        </div>
+      `;
+    }
+
+    async function init() {
+      const { skill, location } = getQueryParams();
+      const workers = await fetchWorkers(skill, location);
+      const container = document.getElementById('worker-list');
+      container.innerHTML = workers.length
+        ? workers.map(createCard).join('')
+        : '<p>No workers found.</p>';
+    }
+
+    window.onload = init;
+  </script>
+</body>
+</html>

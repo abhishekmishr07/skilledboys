@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register | Skilled Boys</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      /* background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); */
+      background-image: linear-gradient(to right, #e99efe, #ef6919);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .form-container {
+      background:transparent;
+      padding: 40px 30px;
+      width: 100%;
+      max-width: 500px;
+      border-radius: 15px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.7s ease;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    .toggle-buttons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 25px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .toggle-buttons button {
+      padding: 10px 15px;
+      border: none;
+      background: #ccc;
+      color: #333;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      flex: 1 1 45%;
+    }
+
+    .toggle-buttons .active {
+      background-color: #3498db;
+      color: white;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-size: 14px;
+      color: #555;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus {
+      border-color: #3498db;
+      outline: none;
+      box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: #3498db;
+      color: white;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #2980b9;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media screen and (max-width: 600px) {
+      .form-container {
+        padding: 25px 20px;
+      }
+
+      .toggle-buttons button {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2 id="form-title">User Registration</h2>
+    <div class="toggle-buttons">
+      <button class="active" id="userBtn">User</button>
+      <button id="workerBtn">Worker</button>
+    </div>
+    <form id="registerForm">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="John Doe" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@example.com" required />
+      </div>
+      <div class="form-group">
+        <label for="phone">Mobile Number</label>
+        <input type="tel" id="phone" placeholder="9876543210" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="••••••••" required />
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" placeholder="••••••••" required />
+      </div>
+      <div class="form-group">
+        <label for="location">City / Location</label>
+        <input type="text" id="location" placeholder="e.g. Delhi" required />
+      </div>
+
+      <div id="workerFields" style="display: none">
+        <div class="form-group">
+          <label for="category">Service Category</label>
+          <select id="category">
+            <option value="">-- Select Category --</option>
+            <option value="electrician">Electrician</option>
+            <option value="plumber">Plumber</option>
+            <option value="carpenter">Carpenter</option>
+            <option value="maid">Maid</option>
+            <option value="cook">Cook</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="experience">Years of Experience</label>
+          <input type="number" id="experience" min="0" placeholder="e.g. 2" />
+        </div>
+        <div class="form-group">
+          <label for="rate">Hourly Rate (INR)</label>
+          <input type="number" id="rate" placeholder="e.g. 300" />
+        </div>
+        <div class="form-group">
+          <label for="idproof">Upload ID Proof</label>
+          <input type="file" id="idproof" accept="image/*,application/pdf" />
+        </div>
+      </div>
+
+      <button type="submit" class="btn">Register</button>
+    </form>
+  </div>
+
+  <script>
+    const userBtn = document.getElementById('userBtn');
+    const workerBtn = document.getElementById('workerBtn');
+    const workerFields = document.getElementById('workerFields');
+    const formTitle = document.getElementById('form-title');
+
+    userBtn.addEventListener('click', () => {
+      userBtn.classList.add('active');
+      workerBtn.classList.remove('active');
+      workerFields.style.display = 'none';
+      formTitle.textContent = 'User Registration';
+    });
+
+    workerBtn.addEventListener('click', () => {
+      workerBtn.classList.add('active');
+      userBtn.classList.remove('active');
+      workerFields.style.display = 'block';
+      formTitle.textContent = 'Worker Registration';
+    });
+
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      const location = document.getElementById('location').value.trim();
+
+      if (!name || !email || !phone || !password || !confirmPassword || !location) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+      }
+
+      if (workerBtn.classList.contains('active')) {
+        const category = document.getElementById('category').value;
+        const experience = document.getElementById('experience').value;
+        const rate = document.getElementById('rate').value;
+        const idproof = document.getElementById('idproof').files[0];
+
+        if (!category || !experience || !rate || !idproof) {
+          alert('Please complete all worker-specific fields.');
+          return;
+        }
+
+        alert('Worker registered successfully!');
+      } else {
+        alert('User registered successfully!');
+      }
+
+      // You can replace alerts with actual backend API calls
+    });
+  </script>
+</body>
+</html>

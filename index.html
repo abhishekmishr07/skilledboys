@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skilled Boys - Find Jobs</title>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">Skilled <span>Boys</span></div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About US</a></li>
+        <li><a href="worker.html">Services</a></li>
+        <li><a href="area.html">Our Service Areas</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    
+    <div class="auth-buttons">
+      <button class="register" onclick="window.location.href='register.html'">Register</button>
+      <button class="login" onclick="window.location.href='login.html'">Login</button>
+    </div>
+
+  </header> 
+  
+
+  <section class="hero">
+    <div class="hero-text">
+    
+
+        <h1 >Find Trusted <br>Skilled Workers </h1> <span class="purple"></span>
+            <div id="span">
+            Near you
+                
+                <span id="element" class="highlighted-text"></span>
+            </div>
+
+
+      <!-- <div class="search-box">
+        <input type="text" placeholder="Workers you need?">
+        <input type="text" placeholder="Location">
+        <button onclick="searchWorkers()">Find Workers</button>
+      </div> -->
+      <div class="search-box">
+        <input type="text" id="skillInput" placeholder="Workers you need?">
+        <input type="text" id="locationInput" placeholder="Location">
+        <!-- <button onclick="searchWorkers()">Find Workers</button> -->
+        <button ><a href="results.html" style="text-decoration:none; color: inherit" >Find Workers   </a></button>
+      </div>
+      
+    </div>
+    <div class="hero-image">
+      <img src="logoskilled.png" alt="Person Image">
+    </div>
+  </section> 
+
+
+  
+  
+  <script>
+    var typed = new Typed('#element', {
+      strings: ['Electrician', 'Plumber', 'Carpenter', 'Painter', 'Maid', 'Cook', 'Driver', 'Gardener', 'Housekeeper', 'Cleaner',  'Interior Designer',  'Fitness Trainer', 'Yoga Instructor', 'Teacher', 'Nurse', 'Babysitter', 'Security Guard', 'Chef','Electrician']
+      ,
+      typeSpeed: 50,
+    });
+
+    function searchWorkers() {
+  const skill = document.getElementById('skillInput').value;
+  const location = document.getElementById('locationInput').value;
+  const query = `results.html?skill=${encodeURIComponent(skill)}&location=${encodeURIComponent(location)}`;
+  window.location.href = query;
+}
+    
+  </script>
+</body>
+</html>

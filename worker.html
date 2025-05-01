@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Workers Categories</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #e7ebe6;
+      margin: 0;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      background: #e9ece4;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 40px;
+      color: #333;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 30px;
+    }
+
+    .category {
+      background-color: #f4dede;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      cursor: pointer;
+    }
+
+    .category:hover {
+      background-color: #e3f2fd;
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+
+    .category img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      border: 2px solid #ddd;
+    }
+
+    .category p {
+      font-size: 15px;
+      font-weight: 600;
+      color: #333;
+      margin: 0;
+    }
+
+    /* Hover effect */
+    .category:hover p {
+      color: #3498db;
+      transform: scale(1.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 1000px) {
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2> Workers Categories</h2>
+    <div class="grid">
+      <div class="category">
+        <img src="electrician.png" alt="Electrician">
+        <p>Electrician</p>
+      </div>
+      <div class="category">
+        <img src="plumber.png" alt="Plumber">
+        <p>Plumber</p>
+      </div>
+      <div class="category">
+        <img src="carpanter.png" alt="Carpenter">
+        <p>Carpenter</p>
+      </div>
+      <div class="category">
+        <img src="painter.png" alt="Painter">
+        <p>Painter</p>
+      </div>
+      <div class="category">
+        <img src="maid.png" alt="Maid">
+        <p>Maid</p>
+      </div>
+      <div class="category">
+        <img src="cook.png" alt="Cook">
+        <p>Cook</p>
+      </div>
+      <div class="category">
+        <img src="driver.png" alt="Driver">
+        <p>Driver</p>
+      </div>
+      <div class="category">
+        <img src="garder.png" alt="Gardener">
+        <p>Gardener</p>
+      </div>
+      <div class="category">
+        <img src="housekeeper.png" alt="Housekeeper">
+        <p>Housekeeper</p>
+      </div>
+      <div class="category">
+        <img src="cleaner.png" alt="Cleaner">
+        <p>Cleaner</p>
+      </div>
+      <div class="category">
+        <img src="Interior.png" alt="Interior Designer">
+        <p>Interior Designer</p>
+      </div>
+      <div class="category">
+        <img src="trainer.png" alt="Fitness Trainer">
+        <p>Fitness Trainer</p>
+      </div>
+      <div class="category">
+        <img src="Yoga.png" alt="Yoga Instructor">
+        <p>Yoga Instructor</p>
+      </div>
+      <div class="category">
+        <img src="teacher.png" alt="Teacher">
+        <p>Teacher</p>
+      </div>
+      <div class="category">
+        <img src="nurse.png" alt="Nurse">
+        <p>Nurse</p>
+      </div>
+      <div class="category">
+        <img src="baby.png" alt="Babysitter">
+        <p>Babysitter</p>
+      </div>
+      <div class="category">
+        <img src="gurd.png" alt="Security Guard">
+        <p>Security Guard</p>
+      </div>
+      <div class="category">
+        <img src="chef.png" alt="Chef">
+        <p>Chef</p>
+      </div>
+      <div class="category">
+        <img src="builder.png" alt="builder">
+        <p>Builder</p>
+      </div>
+      <div class="category">
+        <img src="labour.png" alt="labour">
+        <p>Labour</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

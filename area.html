@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Service Areas - Skilled Boys</title>
+  <!-- Swiper CSS CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .search-bar {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      width: 60%;
+      max-width: 500px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 25px;
+      border: none;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .swiper {
+      width: 100%;
+      height: 100vh;
+    }
+
+    .swiper-slide {
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .city-name {
+      font-size:70px;
+      font-weight: bold;
+      color:white;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+      font-family:serif;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔍 Search Bar -->
+  <div class="search-bar">
+    <input type="text" id="citySearch" placeholder="Search for a city..." oninput="filterCities()" />
+  </div>
+
+  <!-- 🏙️ Swiper Slider -->
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper" id="citySlider">
+      <!-- Slides will be inserted via JS -->
+    </div>
+  </div>
+
+  <!-- Swiper JS CDN -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <script>
+    const cities = [
+      { name: 'Delhi NCR', image: 'delhi1.png' },
+      { name: 'Mumbai', image: 'mumbai.png' },
+      { name: 'Bengaluru', image: 'bengaluru.png' },
+      { name: 'Kolkata', image: 'kolkata.png' },
+      { name: 'Chennai', image: 'chennai.png' },
+      { name: 'Hyderabad', image: 'hydrabad.png' },
+      { name: 'Jaipur', image: 'jaipur.png' },
+      { name: 'Lucknow', image: 'lucknow1.png' },
+      { name: 'Patna', image: 'patna.png' },
+      { name: 'Indore', image: 'indore.png' },
+      { name: 'Gorakhpur', image: 'gorakhpur1.png' },
+    ];
+
+    const citySlider = document.getElementById('citySlider');
+
+    function renderCities(filteredCities) {
+      citySlider.innerHTML = '';
+      filteredCities.forEach(city => {
+        const slide = document.createElement('div');
+        slide.className = 'swiper-slide';
+        slide.style.backgroundImage = `url(${city.image})`;
+        slide.innerHTML = `<div class="city-name">${city.name}</div>`;
+        citySlider.appendChild(slide);
+      });
+
+      // Re-init swiper to refresh the slides
+      if (window.swiperInstance) {
+        window.swiperInstance.update();
+      } else {
+        window.swiperInstance = new Swiper(".mySwiper", {
+          loop: true,
+          autoplay: {
+            delay: 1000,
+            disableOnInteraction: false,
+          },
+        });
+      }
+    }
+
+    function filterCities() {
+      const query = document.getElementById('citySearch').value.toLowerCase();
+      const filtered = cities.filter(city => city.name.toLowerCase().includes(query));
+      renderCities(filtered);
+    }
+
+    // Initial render
+    renderCities(cities);
+  </script>
+</body>
+</html>

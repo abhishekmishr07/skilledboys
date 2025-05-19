@@ -264,3 +264,31 @@ nav ul li a:hover {
     font-size: 20px;
   }
 }
+/* Default: show desktop auth, hide mobile */
+.mobile-auth {
+  display: none;
+}
+
+.desktop-auth {
+  display: flex;
+  gap: 10px;
+}
+
+/* Show mobile auth inside nav list on smaller screens */
+@media (max-width: 992px) {
+  .desktop-auth {
+    display: none;
+  }
+
+  .mobile-auth {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 20px;
+  }
+
+  .mobile-auth .login,
+  .mobile-auth .register {
+    width: 100%;
+  }
+}

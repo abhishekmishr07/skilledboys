@@ -1,80 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Skilled Boys - Find Jobs</title>
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
 </head>
 <body>
-  <header>
-    <div class="logo">Skilled <span>Boys</span></div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About US</a></li>
-        <li><a href="worker.html">Services</a></li>
-        <li><a href="area.html">Our Service Areas</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    
-    <div class="auth-buttons">
-      <button class="register" onclick="window.location.href='register.html'">Register</button>
-      <button class="login" onclick="window.location.href='login.html'">Login</button>
-    </div>
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="skilledboyslogo1.png" alt="Skilled Boys Logo" />
+        <span>Skilled <span class="highlight">Boys</span></span>
+      </div>
+      
+      <nav id="nav-links">
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+          <li><a href="worker.html"><i class="fas fa-briefcase"></i> Services</a></li>
+          <li><a href="area.html"><i class="fas fa-map-marker-alt"></i> Areas</a></li>
+          <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+      </nav>
 
-  </header> 
-  
+      <div class="auth-buttons">
+        <button onclick="window.location.href='register.html'"><i class="fas fa-user-plus"></i> Register</button>
+        <button onclick="window.location.href='login.html'"><i class="fas fa-sign-in-alt"></i> Login</button>
+      </div>
+
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
 
   <section class="hero">
     <div class="hero-text">
-    
+      <h1>Find Trusted <br />Skilled Workers</h1>
+      <div id="span">Near you <span id="element" class="highlighted-text"></span></div>
 
-        <h1 >Find Trusted <br>Skilled Workers </h1> <span class="purple"></span>
-            <div id="span">
-            Near you
-                
-                <span id="element" class="highlighted-text"></span>
-            </div>
-
-
-      <!-- <div class="search-box">
-        <input type="text" placeholder="Workers you need?">
-        <input type="text" placeholder="Location">
-        <button onclick="searchWorkers()">Find Workers</button>
-      </div> -->
       <div class="search-box">
-        <input type="text" id="skillInput" placeholder="Workers you need?">
-        <input type="text" id="locationInput" placeholder="Location">
-        <!-- <button onclick="searchWorkers()">Find Workers</button> -->
-        <button ><a href="results.html" style="text-decoration:none; color: inherit" >Find Workers   </a></button>
+        <input type="text" id="skillInput" placeholder="Workers you need?" />
+        <input type="text" id="locationInput" placeholder="Location" />
+        <button onclick="searchWorkers()">Find Workers</button>
       </div>
-      
     </div>
+
     <div class="hero-image">
-      <img src="logoskilled.png" alt="Person Image">
+      <img src="logoskilled.png" alt="Skilled Workers Image" />
     </div>
-  </section> 
+  </section>
 
-
-  
-  
   <script>
-    var typed = new Typed('#element', {
-      strings: ['Electrician', 'Plumber', 'Carpenter', 'Painter', 'Maid', 'Cook', 'Driver', 'Gardener', 'Housekeeper', 'Cleaner',  'Interior Designer',  'Fitness Trainer', 'Yoga Instructor', 'Teacher', 'Nurse', 'Babysitter', 'Security Guard', 'Chef','Electrician']
-      ,
+    var typed = new Typed("#element", {
+      strings: [
+        "Electrician", "Plumber", "Carpenter", "Painter", "Maid",
+        "Cook", "Driver", "Gardener", "Housekeeper", "Cleaner",
+        "Interior Designer", "Fitness Trainer", "Yoga Instructor",
+        "Teacher", "Nurse", "Babysitter", "Security Guard", "Chef"
+      ],
       typeSpeed: 50,
+      backSpeed: 30,
+      loop: true
     });
 
     function searchWorkers() {
-  const skill = document.getElementById('skillInput').value;
-  const location = document.getElementById('locationInput').value;
-  const query = `results.html?skill=${encodeURIComponent(skill)}&location=${encodeURIComponent(location)}`;
-  window.location.href = query;
-}
-    
+      const skill = document.getElementById('skillInput').value;
+      const location = document.getElementById('locationInput').value;
+      const query = `results.html?skill=${encodeURIComponent(skill)}&location=${encodeURIComponent(location)}`;
+      window.location.href = query;
+    }
+
+    function toggleMenu() {
+      const nav = document.getElementById("nav-menu");
+      nav.classList.toggle("active");
+
+      
+  document.getElementById("hamburger").addEventListener("click", () => {
+    document.querySelector("nav ul").classList.toggle("active");
+  });
+
+
+    }
   </script>
 </body>
 </html>

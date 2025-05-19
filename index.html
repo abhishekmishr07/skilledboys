@@ -7,36 +7,41 @@
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
 
 </head>
 <body>
-  <header class="navbar">
-    <div class="nav-container">
-      <div class="logo">
-        <img src="skilledboyslogo1.png" alt="Skilled Boys Logo" />
-        <span>Skilled <span class="highlight">Boys</span></span>
-      </div>
-      
-      <nav id="nav-links">
-        <ul>
-          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-          <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
-          <li><a href="worker.html"><i class="fas fa-briefcase"></i> Services</a></li>
-          <li><a href="area.html"><i class="fas fa-map-marker-alt"></i> Areas</a></li>
-          <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-        </ul>
-      </nav>
-
-      <div class="auth-buttons">
-        <button onclick="window.location.href='register.html'"><i class="fas fa-user-plus"></i> Register</button>
-        <button onclick="window.location.href='login.html'"><i class="fas fa-sign-in-alt"></i> Login</button>
-      </div>
-
-      <div class="hamburger" id="hamburger">
-        <i class="fas fa-bars"></i>
-      </div>
+<header class="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <img src="skilledboyslogo1.png" alt="Logo" />
+      Skilled<span class="highlight">Boys</span>
     </div>
-  </header>
+
+    <button class="hamburger">&#9776;</button>
+
+    <nav>
+  <ul>
+    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+    <li><a href="worker.html"><i class="fas fa-concierge-bell"></i> Services</a></li>
+    <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+    
+    <!-- Mobile Auth Buttons -->
+    <li class="mobile-auth">
+     <a href="login.html"> <button class="login"> <i class="fas fa-sign-in-alt"></i> Login </button></a>
+     <a href="register.html"> <button class="register"> <i class="fas fa-user-plus"></i> Register</button></a>
+    </li>
+  </ul>
+</nav>
+
+    <div class="auth-buttons desktop-auth">
+      <button class="login">Login</button>
+      <button class="register">Register</button>
+    </div>
+  </div>
+</header>
+
 
   <section class="hero">
     <div class="hero-text">
@@ -75,17 +80,19 @@
       window.location.href = query;
     }
 
-    function toggleMenu() {
-      const nav = document.getElementById("nav-menu");
-      nav.classList.toggle("active");
+  document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector("nav ul");
 
-      
-  document.getElementById("hamburger").addEventListener("click", () => {
-    document.querySelector("nav ul").classList.toggle("active");
+    hamburger.addEventListener("click", function () {
+      navLinks.classList.toggle("active");
+    });
   });
 
 
-    }
+   
+  
+    
   </script>
 </body>
 </html>

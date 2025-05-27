@@ -1,112 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Worker Results</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Electricians in Greater Noida</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f6fb;
+      background: #f4f4f4;
+      margin: 0;
       padding: 20px;
     }
-
     h1 {
-      color: #e91e63;
+      text-align: center;
+      color: #333;
     }
-
-    #worker-list {
+    .worker-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 20px;
       margin-top: 30px;
     }
-
-    .card {
-      background: white;
-      border-radius: 10px;
+    .worker-card {
+      background: #fff;
       padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-
-    .card img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
+    .worker-card .icon {
+      font-size: 60px;
+      color: #007BFF;
       margin-bottom: 10px;
     }
-
-    .star {
-      color: gold;
+    .worker-card h3 {
+      margin: 5px 0;
+      color: #007BFF;
+    }
+    .worker-card p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+    .rating {
+      color: #FFD700;
     }
   </style>
 </head>
 <body>
 
-  <h1>Search Results</h1>
-  <div id="worker-list">Loading...</div>
+  <h1>Electricians in Greater Noida</h1>
+
+  <div class="worker-grid">
+    <!-- Cards generated using JavaScript below -->
+  </div>
 
   <script>
-    function getQueryParams() {
-      const params = new URLSearchParams(window.location.search);
-      return {
-        skill: params.get("skill") || '',
-        location: params.get("location") || ''
-      };
-    }
+    const names = [
+      "Aman Singh", "Ravi Kumar", "Suresh Yadav", "Arjun Verma", "Rakesh Sharma", "Vikram Chauhan", "Pawan Gupta",
+      "Karan Thakur", "Anil Mehta", "Rajat Joshi", "Sunil Rawat", "Nitin Rana", "Manoj Tiwari", "Ashok Raj",
+      "Deepak Malhotra", "Harsh Vardhan", "Neeraj Pandey", "Rohit Jain", "Tarun Sinha", "Yash Mishra",
+      "Vikas Tyagi", "Praveen Bhatia", "Mukesh Kumar", "Rahul Chauhan", "Varun Awasthi", "Ajay Dagar",
+      "Mohit Bansal", "Suraj Singh", "Bhupendra Rana", "Ajeet Kumar", "Abhishek Sharma", "Sahil Raj",
+      "Shubham Maurya", "Hemant Joshi", "Sandeep Yadav", "Ravindra Chauhan", "Lalit Rawal", "Vivek Taneja",
+      "Devendra Singh", "Naveen Kumar", "Ritik Arora", "Parveen Verma", "Jeetendra Tomar", "Sachin Goyal",
+      "Lokesh Jha", "Ashish Saini", "Gaurav Rathi", "Manish Kaushik", "Dinesh Choudhary", "Jatin Sharma"
+    ];
 
-    async function fetchWorkers(skill, location) {
-      try {
-        // Replace this with your real API call
-        // Example: `const res = await fetch(\`https://your-api.com/workers?skill=${skill}&location=${location}\`);`
-        
-        const dummyWorkers = Array.from({ length: 30 }, (_, i) => ({
-          name: `Electrician ${i + 1}`,
-          age: 20 + (i % 10),
-          gender: i % 2 === 0 ? 'Male' : 'Female',
-          experience: 1 + (i % 10),
-          rating: (Math.random() * 2 + 3).toFixed(1),
-          skill: 'Electrician',
-          location: 'Beta 1',
-          photo: `https://randomuser.me/api/portraits/${i % 2 === 0 ? 'men' : 'women'}/${i}.jpg`
-        }));
+    const grid = document.querySelector('.worker-grid');
 
-        return dummyWorkers.filter(w =>
-          w.skill.toLowerCase().includes(skill.toLowerCase()) &&
-          w.location.toLowerCase().includes(location.toLowerCase())
-        );
+    names.forEach((name, index) => {
+      const card = document.createElement('div');
+      card.className = 'worker-card';
+      const age = Math.floor(Math.random() * 15) + 25;
+      const gender = 'Male';
+      const rating = (Math.random() * 2 + 3).toFixed(1);
+      const phone = `+91 ${Math.floor(7000000000 + Math.random() * 1000000000)}`;
 
-      } catch (err) {
-        console.error('Error fetching workers:', err);
-        return [];
-      }
-    }
-
-    function createCard(worker) {
-      const stars = '★'.repeat(Math.round(worker.rating)) + '☆'.repeat(5 - Math.round(worker.rating));
-      return `
-        <div class="card">
-          <img src="${worker.photo}" alt="${worker.name}" />
-          <h3>${worker.name}</h3>
-          <p><strong>Age:</strong> ${worker.age}</p>
-          <p><strong>Gender:</strong> ${worker.gender}</p>
-          <p><strong>Experience:</strong> ${worker.experience} years</p>
-          <p><strong>Rating:</strong> <span class="star">${stars}</span></p>
-        </div>
+      card.innerHTML = `
+        <div class="icon"><i class="fas fa-user-circle"></i></div>
+        <h3>${name}</h3>
+        <p><strong>Location:</strong> Greater Noida</p>
+        <p><strong>Contact:</strong> ${phone}</p>
+        <p><strong>Age:</strong> ${age}</p>
+        <p><strong>Gender:</strong> ${gender}</p>
+        <p class="rating"><strong>Rating:</strong> ${rating} ★</p>
       `;
-    }
-
-    async function init() {
-      const { skill, location } = getQueryParams();
-      const workers = await fetchWorkers(skill, location);
-      const container = document.getElementById('worker-list');
-      container.innerHTML = workers.length
-        ? workers.map(createCard).join('')
-        : '<p>No workers found.</p>';
-    }
-
-    window.onload = init;
+      grid.appendChild(card);
+    });
   </script>
+
 </body>
 </html>
